@@ -14,13 +14,13 @@ import java.io.InputStreamReader;
 /**
  * Created by Josrom on 04/06/2015.
  */
-public class DB extends SQLiteOpenHelper{
+public class DBHelper extends SQLiteOpenHelper{
 
     final static int DB_VERSION = 1;
     final static String DB_NAME = "ffx.s3db";
     Context ctx;
 
-    public DB(Context context) {
+    public DBHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
         ctx = context;
     }
