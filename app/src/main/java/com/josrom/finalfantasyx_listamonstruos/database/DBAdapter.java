@@ -171,23 +171,12 @@ public class DBAdapter {
         return monsters.size()*10;
     }
 
-    public boolean increaseCountMonster(Monster monster) {
+    public boolean setCountMonster(Monster monster) {
         ContentValues cv = new ContentValues();
         cv.put(Monster.MONSTER.COLUMN_ID,monster.getId());
         cv.put(Monster.MONSTER.COLUMN_NAME,monster.getName());
         cv.put(Monster.MONSTER.COLUMN_ZONE,monster.getZone().getName());
-        cv.put(Monster.MONSTER.COLUMN_COUNT,monster.getCount()+1);
-
-        int rs = mDB.update(Monster.MONSTER.TABLE, cv, "_id = " + monster.getId(), null);
-        return rs==1;
-    }
-
-    public boolean decreaseCountMonster(Monster monster) {
-        ContentValues cv = new ContentValues();
-        cv.put(Monster.MONSTER.COLUMN_ID,monster.getId());
-        cv.put(Monster.MONSTER.COLUMN_NAME,monster.getName());
-        cv.put(Monster.MONSTER.COLUMN_ZONE,monster.getZone().getName());
-        cv.put(Monster.MONSTER.COLUMN_COUNT,monster.getCount()-1);
+        cv.put(Monster.MONSTER.COLUMN_COUNT,monster.getCount());
 
         int rs = mDB.update(Monster.MONSTER.TABLE, cv, "_id = " + monster.getId(), null);
         return rs==1;
