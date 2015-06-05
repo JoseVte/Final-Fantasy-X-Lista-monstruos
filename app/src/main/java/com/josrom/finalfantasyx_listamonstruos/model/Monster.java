@@ -1,4 +1,4 @@
-package com.josrom.finalfantasyx_listamonstruos.models;
+package com.josrom.finalfantasyx_listamonstruos.model;
 
 /**
  * Created by Josrom on 04/06/2015.

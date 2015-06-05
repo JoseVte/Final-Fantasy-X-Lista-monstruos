@@ -1,18 +1,39 @@
 package com.josrom.finalfantasyx_listamonstruos.activity;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.josrom.finalfantasyx_listamonstruos.R;
+import com.josrom.finalfantasyx_listamonstruos.database.DBAdapter;
+import com.josrom.finalfantasyx_listamonstruos.fragment.NavigationDrawerFragment;
 
 public class MainActivity extends ActionBarActivity {
+    private static MainActivity mApp;
+    private static DBAdapter mDBAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.app_bar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        NavigationDrawerFragment drawerFragment = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
+        drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout),toolbar);
+
+        mDBAdapter = new DBAdapter(this);
+        mDBAdapter = mDBAdapter.open();
+        mDBAdapter.existsTables();
+        mDBAdapter.existsData();
+
+        mApp = this;
     }
 
     @Override
@@ -35,5 +56,15 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public static Context getContext(){ return mApp.getApplicationContext(); }
+
+    public static DBAdapter getDataBase() { return mDBAdapter; }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mDBAdapter.close();
     }
 }

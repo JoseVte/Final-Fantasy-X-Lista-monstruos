@@ -1,0 +1,29 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_light"
+    tools:context="com.josrom.eurocoins.fragment.NavigationDrawerFragment">
+
+    <LinearLayout
+        android:id="@+id/container_drawer_image"
+        android:background="@color/primary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_marginTop="@dimen/margin_top"
+            android:layout_marginBottom="16dp"
+            android:layout_width="280dp"
+            android:layout_height="140dp"
+            android:src="@drawable/final_fantasy_x_logo"
+            android:contentDescription="@null" />
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@+id/container_drawer_image"
+        android:id="@+id/drawer_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

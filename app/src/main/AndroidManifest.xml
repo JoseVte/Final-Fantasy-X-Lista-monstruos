@@ -16,6 +16,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activity.ListZones"
+            android:label="@string/title_activity_list_zones"
+            android:parentActivityName=".activity.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.josrom.finalfantasyx_listamonstruos.activity.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activity.ListMonsterZone"
+            android:label="@string/title_activity_list_monster_zone"
+            android:parentActivityName=".activity.ListZones" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.josrom.finalfantasyx_listamonstruos.activity.ListZones" />
+        </activity>
     </application>
 
 </manifest>
